@@ -11,7 +11,7 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '\\', ':Neotree toggle<CR>', desc = 'NeoTree Toggle', silent = true },
   },
   init = function()
     -- the remote file handling part
@@ -58,12 +58,15 @@ return {
     window = {
       mappings = {
         ['\\'] = 'close_window',
+        ['l'] = 'open',
+        ['h'] = 'close_node',
         ['<space>'] = 'none',
         ['Y'] = function(state)
           local node = state.tree:get_node()
           local path = node:get_id()
           vim.fn.setreg('+', path, 'c')
         end,
+        ['P'] = { 'toggle_preview', config = { use_float = false } },
       },
     },
     default_component_configs = {

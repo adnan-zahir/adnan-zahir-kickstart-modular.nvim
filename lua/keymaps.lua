@@ -26,13 +26,46 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Navigate between pane splits
+-- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { silent = true, noremap = true })
 
 -- Quick escape form insert to normal mode
-vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Escape to normal mode' })
+vim.keymap.set('i', 'jk', '<Esc>', { silent = true })
+
+-- Quick buffer delete
+-- vim.keymap.set('n', '<leader>bd', ':bn <Return>', { desc = '[B]uffer [D]elete' })
+
+-- Split pane
+vim.keymap.set('n', '<leader>|', ':vsplit <Return>', { desc = 'Split |' })
+vim.keymap.set('n', '<leader>-', ':split <Return>', { desc = 'Split -' })
+
+-- Buffer navigation
+-- vim.keymap.set('n', 'H', ':bprevious <Return>', { silent = true })
+-- vim.keymap.set('n', 'L', ':bnext <Return>', { silent = true })
+
+-- Tab navigation
+vim.keymap.set('n', '<C-H>', ':tabprevious <Return>', { silent = true })
+vim.keymap.set('n', '<C-L>', ':tabnext <Return>', { silent = true })
+
+-- --------
+-- BarBar
+-- -------- Sort automatically by...
+vim.keymap.set('n', '<leader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', { noremap = true, silent = true, desc = '[B]uffer Sort Number' })
+vim.keymap.set('n', '<leader>bn', '<Cmd>BufferOrderByName<CR>', { noremap = true, silent = true, desc = '[B]uffer Sort [N]ame' })
+vim.keymap.set('n', '<leader>bp', '<Cmd>BufferOrderByDirectory<CR>', { noremap = true, silent = true, desc = '[B]uffer Sort [P]ath' })
+vim.keymap.set('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', { noremap = true, silent = true, desc = '[B]uffer Sort [L]anguage' })
+vim.keymap.set('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { noremap = true, silent = true, desc = '[B]uffer Sort [W]indow Number' })
+vim.keymap.set('n', '<leader>bd', '<Cmd>BufferClose<CR>', { noremap = true, silent = true, desc = '[B]uffer [D]elete' })
+-- Move to previous/next
+vim.keymap.set('n', 'H', '<Cmd>BufferPrevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'L', '<Cmd>BufferNext<CR>', { noremap = true, silent = true })
+-- Re-order to previous/next
+vim.keymap.set('n', '<A-h>', '<Cmd>BufferMovePrevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-l>', '<Cmd>BufferMoveNext<CR>', { noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

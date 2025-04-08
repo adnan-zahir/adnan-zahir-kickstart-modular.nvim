@@ -62,4 +62,10 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- No wrap line
+vim.wo.wrap = false
+
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Laravel pint format on save
+-- vim.cmd [[autocmd BufWritePost *.php silent !./vendor/bin/pint %:p]]
